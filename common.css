@@ -1,0 +1,72 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #e4e4da;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: rgba(17,17,17,0.62);
+  text-decoration: none;
+}
+
+a:hover {
+  color: #111111;
+}
+
+::selection {
+  background: #111111;
+  color: #e4e4da;
+}
+
+.site-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding: 28px 0;
+  border-bottom: 1px solid rgba(17,17,17,0.14);
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.site-brand,
+.site-nav,
+.site-footer {
+  font-family: Geist Mono, ui-monospace, monospace;
+}
+
+.site-brand {
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #111111;
+}
+
+.site-nav {
+  display: flex;
+  gap: clamp(16px, 3vw, 32px);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.site-nav a[aria-current="page"] {
+  color: #111111;
+}
+
+.site-footer {
+  border-top: 1px solid rgba(17,17,17,0.14);
+  padding: 28px 0 40px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: rgba(17,17,17,0.42);
+}

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="./common.css" />
+<style>
+  html, body { margin: 0; padding: 0; background: #e4e4da; }
+  * { box-sizing: border-box; }
+  a { color: rgba(17,17,17,0.62); text-decoration: none; }
+  a:hover { color: #111111; }
+  ::selection { background: #111111; color: #e4e4da; }
+</style>
+</helmet>
+<div style="min-height: 100vh; background: #e4e4da; color: #111111; font-family: Geist, Helvetica Neue, Helvetica, sans-serif; -webkit-font-smoothing: antialiased; padding: 0 clamp(20px, 5vw, 72px);">
+
+  <div data-site-header></div>
+
+  <div style="max-width: 1240px; margin: 0 auto;">
+
+    <section style="padding: clamp(48px, 9vw, 104px) 0 clamp(40px, 6vw, 72px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: clamp(28px, 4vw, 64px); align-items: start;">
+      <div style="display: grid; gap: 24px;">
+        <h1 style="margin: 0; font-size: clamp(32px, 5.4vw, 60px); line-height: 1.04; letter-spacing: -0.03em; font-weight: 500;">About</h1>
+        <p style="margin: 0; font-size: clamp(16px, 1.6vw, 20px); line-height: 1.6; color: rgba(17,17,17,0.82);">I am a web designer, front-end developer and software engineer, currently working as a technical lead.</p>
+        <p style="margin: 0; font-size: 15px; line-height: 1.7; color: rgba(17,17,17,0.62);">My work sits between design and engineering: I design the interface, build the front end, and take responsibility for the architecture and delivery behind it. That combination means fewer handoffs, fewer compromises between the design and what ships, and a team that has one person who can answer both sets of questions.</p>
+        <p style="margin: 0; font-size: 15px; line-height: 1.7; color: rgba(17,17,17,0.62);">As a technical lead I set standards, review work, and keep the day-to-day moving — while staying close enough to the code and the pixels to still make things myself.</p>
+      </div>
+      <div style="aspect-ratio: 4 / 5; border: 1px solid rgba(17,17,17,0.16); background-color: #dbdbd0; background-image: repeating-linear-gradient(135deg, rgba(17,17,17,0.09) 0 1px, transparent 1px 9px); display: grid; place-items: center;">
+        <span style="font-family: Geist Mono, ui-monospace, monospace; font-size: 11px; letter-spacing: 0.08em; color: rgba(17,17,17,0.42);">portrait</span>
+      </div>
+    </section>
+
+    <section style="padding-bottom: clamp(48px, 8vw, 96px); display: grid; gap: 20px;">
+      <h2 style="margin: 0; font-family: Geist Mono, ui-monospace, monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(17,17,17,0.5); font-weight: 400;">Capabilities</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 0;">
+        <sc-for list="{{ capabilities }}" as="c" hint-placeholder-count="4">
+          <div style="background: #e4e4da; border: 1px solid rgba(17,17,17,0.14); margin: 0 -1px -1px 0; padding: clamp(22px, 3vw, 30px); display: grid; gap: 12px; align-content: start; min-height: 180px;">
+            <h3 style="margin: 0; font-size: 17px; font-weight: 500; letter-spacing: -0.01em;">{{ c.title }}</h3>
+            <ul style="margin: 0; padding: 0; list-style: none; display: grid; gap: 7px; font-family: Geist Mono, ui-monospace, monospace; font-size: 12px; line-height: 1.5; color: rgba(17,17,17,0.58);">
+              <sc-for list="{{ c.items }}" as="i" hint-placeholder-count="4">
+                <li>{{ i }}</li>
+              </sc-for>
+            </ul>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="padding-bottom: clamp(48px, 8vw, 96px); display: grid; gap: 20px;">
+      <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 20px; flex-wrap: wrap;">
+        <h2 style="margin: 0; font-family: Geist Mono, ui-monospace, monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(17,17,17,0.5); font-weight: 400;">Experience</h2>
+        <a href="https://www.linkedin.com/in/madhura-mendis/" target="_blank" rel="noopener" style="font-family: Geist Mono, ui-monospace, monospace; font-size: 12px; letter-spacing: 0.08em; color: rgba(17,17,17,0.62);" style-hover="color: #111111;">Full history on LinkedIn ↗</a>
+      </div>
+      <div style="display: grid;">
+        <sc-for list="{{ roles }}" as="r" hint-placeholder-count="3">
+          <div style="display: grid; grid-template-columns: minmax(0, 1fr); gap: 6px; padding: 22px 0; border-top: 1px solid rgba(17,17,17,0.14);">
+            <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 20px; flex-wrap: wrap;">
+              <h3 style="margin: 0; font-size: 18px; font-weight: 500; letter-spacing: -0.01em;">{{ r.title }}</h3>
+              <span style="font-family: Geist Mono, ui-monospace, monospace; font-size: 11px; letter-spacing: 0.06em; color: rgba(17,17,17,0.45);">{{ r.years }}</span>
+            </div>
+            <p style="margin: 0; font-size: 14px; line-height: 1.6; color: rgba(17,17,17,0.6); max-width: 64ch;">{{ r.body }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="padding-bottom: clamp(48px, 8vw, 96px); border-top: 1px solid rgba(17,17,17,0.14); padding-top: clamp(32px, 5vw, 56px); display: grid; gap: 24px; justify-items: start;">
+      <h2 style="margin: 0; font-size: clamp(26px, 4vw, 44px); font-weight: 500; letter-spacing: -0.025em; max-width: 24ch; line-height: 1.1;">Available for design and engineering work.</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 0; width: 100%;">
+        <a href="https://www.linkedin.com/in/madhura-mendis/" target="_blank" rel="noopener" style="background: #e4e4da; border: 1px solid rgba(17,17,17,0.14); margin: 0 -1px -1px 0; padding: 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; font-family: Geist Mono, ui-monospace, monospace; font-size: 13px; letter-spacing: 0.06em;" style-hover="background: #dcdcd1;">
+          <span>Message on LinkedIn</span><span style="color: #111111;">↗</span>
+        </a>
+        <a href="https://www.behance.net/madhuramenad7b" target="_blank" rel="noopener" style="background: #e4e4da; border: 1px solid rgba(17,17,17,0.14); margin: 0 -1px -1px 0; padding: 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; font-family: Geist Mono, ui-monospace, monospace; font-size: 13px; letter-spacing: 0.06em;" style-hover="background: #dcdcd1;">
+          <span>See Behance</span><span style="color: #111111;">↗</span>
+        </a>
+        <a href="Work.dc.html" style="background: #e4e4da; border: 1px solid rgba(17,17,17,0.14); margin: 0 -1px -1px 0; padding: 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; font-family: Geist Mono, ui-monospace, monospace; font-size: 13px; letter-spacing: 0.06em;" style-hover="background: #dcdcd1;">
+          <span>Browse the work</span><span style="color: #111111;">→</span>
+        </a>
+      </div>
+    </section>
+
+    <div data-site-footer></div>
+
+  </div>
+</div>
+
+</x-dc>
+<script src="./common.js"></script>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  splitWords(h) {
+    const ease = "cubic-bezier(0.16, 0.84, 0.24, 1)";
+    const nodes = Array.from(h.childNodes);
+    const lines = [[]];
+    nodes.forEach(n => {
+      if (n.nodeType === 1 && n.tagName === "BR") { lines.push([]); return; }
+      const style = n.nodeType === 1 ? n.getAttribute("style") || "" : "";
+      const text = n.textContent || "";
+      text.split(/\s+/).filter(Boolean).forEach(w => lines[lines.length - 1].push({ w: w, style: style }));
+    });
+    h.innerHTML = "";
+    h.style.opacity = "1";
+    h.dataset.masked = "1";
+    const inners = [];
+    lines.forEach(words => {
+      const line = document.createElement("span");
+      line.style.display = "block";
+      words.forEach((item, i) => {
+        const wrap = document.createElement("span");
+        wrap.style.display = "inline-block";
+        wrap.style.overflow = "hidden";
+        wrap.style.verticalAlign = "top";
+        wrap.style.paddingBottom = "0.08em";
+        const inner = document.createElement("span");
+        inner.style.display = "inline-block";
+        inner.style.transform = "translate3d(0, 110%, 0)";
+        inner.style.transition = "transform 900ms " + ease;
+        inner.style.willChange = "transform";
+        if (item.style) inner.setAttribute("style", inner.getAttribute("style") + ";" + item.style);
+        inner.textContent = item.w;
+        wrap.appendChild(inner);
+        line.appendChild(wrap);
+        if (i < words.length - 1) line.appendChild(document.createTextNode(" "));
+        inners.push(inner);
+      });
+      h.appendChild(line);
+    });
+    return inners;
+  }
+  initParallax() {
+    const h1 = document.querySelector("h1");
+    const fig = document.querySelector("figure");
+    if (!h1 && !fig) return;
+    let raf = null;
+    const onScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        raf = null;
+        const y = window.scrollY || 0;
+        if (h1) h1.style.translate = "0 " + (-Math.min(y * 0.08, 90)) + "px";
+        if (fig) fig.style.translate = "0 " + Math.min(y * 0.05, 60) + "px";
+      });
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    this._onScroll = onScroll;
+  }
+  prepareScramble(h) {
+    const glyphs = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#$%&*+-/<>";
+    const lines = [[]];
+    Array.from(h.childNodes).forEach(n => {
+      if (n.nodeType === 1 && n.tagName === "BR") { lines.push([]); return; }
+      const style = n.nodeType === 1 ? n.getAttribute("style") || "" : "";
+      (n.textContent || "").split("").forEach(ch => lines[lines.length - 1].push({ ch: ch, style: style }));
+    });
+    h.innerHTML = "";
+    h.dataset.masked = "1";
+    h.style.opacity = "1";
+    const cells = [];
+    lines.forEach(chars => {
+      const line = document.createElement("span");
+      line.style.display = "block";
+      let word = null;
+      chars.forEach(item => {
+        if (!item.ch.trim()) {
+          word = null;
+          line.appendChild(document.createTextNode(item.ch));
+          return;
+        }
+        if (!word) {
+          word = document.createElement("span");
+          word.style.display = "inline-block";
+          word.style.whiteSpace = "pre";
+          line.appendChild(word);
+        }
+        const sp = document.createElement("span");
+        if (item.style) sp.setAttribute("style", item.style);
+        sp.style.whiteSpace = "pre";
+        sp.textContent = item.ch;
+        word.appendChild(sp);
+        cells.push({ el: sp, final: item.ch });
+      });
+      h.appendChild(line);
+    });
+    cells.forEach(c => { c.el.textContent = glyphs[(Math.random() * glyphs.length) | 0]; c.el.style.opacity = "0.3"; });
+    return { cells: cells, glyphs: glyphs };
+  }
+  runScramble(pack) {
+    const glyphs = pack.glyphs, cells = pack.cells;
+    const start = performance.now();
+    const step = now => {
+      const t = now - start;
+      let running = false;
+      cells.forEach((c, i) => {
+        if (c.done) return;
+        const settle = 280 + i * 30;
+        if (t > settle) {
+          c.el.textContent = c.final;
+          c.el.style.transition = "opacity 240ms linear";
+          c.el.style.opacity = "1";
+          c.done = true;
+        } else {
+          running = true;
+          if (((t / 55) | 0) !== c.tick) {
+            c.tick = (t / 55) | 0;
+            c.el.textContent = glyphs[(Math.random() * glyphs.length) | 0];
+          }
+        }
+      });
+      if (running) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+  initReveals() {
+    const ease = "cubic-bezier(0.16, 0.84, 0.24, 1)";
+    const masked = [];
+    document.querySelectorAll("h1, h2, h3").forEach(h => {
+      const size = parseFloat(getComputedStyle(h).fontSize);
+      if (size < 10 || h.dataset.masked) return;
+      masked.push({ el: h, pack: this.prepareScramble(h) });
+    });
+    const targets = [];
+    document.querySelectorAll("section").forEach(sec => {
+      Array.from(sec.children).forEach(c => targets.push(c));
+    });
+    document.querySelectorAll("article, header, footer").forEach(e => targets.push(e));
+    const seen = new Set();
+    const items = targets.filter(el => el && !el.dataset.masked && !seen.has(el) && seen.add(el));
+    items.forEach(el => {
+      el.style.willChange = "opacity, transform";
+      el.style.opacity = "0";
+      el.style.transform = "translate3d(0, 34px, 0)";
+      el.style.transition = "opacity 900ms " + ease + ", transform 900ms " + ease;
+    });
+    const showBlock = (el, delay) => setTimeout(() => {
+      el.style.opacity = "1";
+      el.style.transform = "translate3d(0, 0, 0)";
+    }, delay);
+    const showLines = pack => this.runScramble(pack);
+    const all = items.concat(masked.map(m => m.el));
+    if (!("IntersectionObserver" in window)) {
+      items.forEach(el => showBlock(el, 0));
+      masked.forEach(m => showLines(m.pack));
+      return;
+    }
+    let batch = [];
+    let flush = null;
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(en => {
+        if (!en.isIntersecting) return;
+        io.unobserve(en.target);
+        batch.push(en.target);
+        clearTimeout(flush);
+        flush = setTimeout(() => {
+          batch.forEach((el, n) => {
+            const m = masked.find(x => x.el === el);
+            const delay = Math.min(n, 6) * 90;
+            if (m) setTimeout(() => showLines(m.pack), delay);
+            else showBlock(el, delay);
+          });
+          batch = [];
+        }, 30);
+      });
+    }, { rootMargin: "0px 0px -12% 0px", threshold: 0.08 });
+    requestAnimationFrame(() => all.forEach(el => io.observe(el)));
+    this._revealFallback = setTimeout(() => {
+      items.forEach(el => showBlock(el, 0));
+      masked.forEach(m => showLines(m.pack));
+    }, 3500);
+  }
+  componentWillUnmount_reveal() { clearTimeout(this._revealFallback); }
+  componentDidMount() { this.initReveals(); this.initParallax(); }
+  renderVals() {
+    return {
+      capabilities: [
+        { title: "Design", items: ["Web & marketing sites", "Product UI", "Design systems", "Prototyping"] },
+        { title: "Front-end", items: ["HTML, CSS, JavaScript", "Component architecture", "Accessibility", "Performance"] },
+        { title: "Engineering", items: ["Application architecture", "APIs & integrations", "Code review", "Testing & CI"] },
+        { title: "Leadership", items: ["Technical direction", "Mentoring", "Estimation & planning", "Client communication"] }
+      ],
+      roles: [
+        { title: "Technical Lead", years: "current", body: "Placeholder — company, team size and what you own. Replace with the summary from your LinkedIn." },
+        { title: "Software Engineer / Front-end Developer", years: "prior", body: "Placeholder — the products you built and the stack you used." },
+        { title: "Web Designer", years: "earlier", body: "Placeholder — early design work and clients." }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>
